@@ -5,8 +5,7 @@ Course: CS 3851 - Algorithms (Final Project)
 """
 
 import sys
-from Graph import WeightedGraph
-from Graph import Vertex
+import Graph
 from Tree import Tree
 
 
@@ -20,3 +19,8 @@ def run_prims(graph, vertex):
     :return: Tree Object representing the MSP of the WeightedGraph
     """
     pass
+
+
+# test demo of Graph structure
+g = Graph.WeightedGraph.create_test_graph(100, 100, 10)
+g.print_graph()
