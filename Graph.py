@@ -81,6 +81,13 @@ class WeightedGraph:
         else:
             return set()
 
+    def get_starting_vertex(self):
+        """
+        Used in Prim's algorithm to define an arbitrary base vertex
+        :return: some arbitrary vertex in the graph.
+        """
+        return next(iter(self._vertices))
+
     def remove_dangling_edges(self):
         """
          TODO (may not do)
@@ -99,7 +106,6 @@ class WeightedGraph:
 
     def print_graph(self):
         """
-        TODO
         Print's the graph to the console in a (somewhat)
         readable fashion
         """
@@ -140,7 +146,6 @@ class WeightedGraph:
                         if i != 0:
                             num_edges = random.randrange(0, i)  # this might have to decay exponentially as i gets large
                             num_edges = 1 if (num_edges == 0) else num_edges
-                            print(num_edges)
                             connecting_vertices = random.sample(objs, num_edges)
                             for vertex in connecting_vertices:
                                 graph.add_edge(working_vertex, vertex)
