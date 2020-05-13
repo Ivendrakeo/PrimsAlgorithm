@@ -16,7 +16,7 @@ class WeightedGraph:
     This implementation is NOT fully functional in that it is only meant
     to supplement a demonstration for Prim's Algorithm
 
- .
+ 
     """
 
     # Adjacency matrix  for the graph where
