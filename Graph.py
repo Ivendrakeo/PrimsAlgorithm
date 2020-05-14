@@ -66,8 +66,8 @@ class WeightedGraph:
                 self.add_vertex(vertex_one)
                 self.add_vertex(vertex_two)
                 d = self.calculate_distance(vertex_one, vertex_two)
-                self._edges[vertex_one].add(Edge(vertex_two, d))
-                self._edges[vertex_two].add(Edge(vertex_one, d))
+                self._edges[vertex_one].add(Edge(vertex_one, vertex_two, d))
+                self._edges[vertex_two].add(Edge(vertex_two, vertex_one, d))
                 return True
         return False
 
@@ -194,11 +194,13 @@ class Edge:
     Models an Edge in a WeightedGraph.
     """
 
-    def __init__(self, connectedVertex, distance):
+    def __init__(self, sourceVertex, connectedVertex, distance):
         # Cartesian distance between vextex'es (distance)
         self.distance = distance
         # Vertex object which this edge connects to
         self.connectedVertex = connectedVertex
+        # Source Vertex object
+        self.sourceVertex = sourceVertex;
 
     def __str__(self):
         """

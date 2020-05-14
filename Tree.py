@@ -38,7 +38,6 @@ class Tree:
         node = Node(vertex.x, vertex.y, vertex.name, parent=None)
         if self._parent is None:
             self._parent = node
-            self._nodes.add(node)
         else:
             nodes = self._nodes.keys()
             if parent.name in nodes and vertex.name not in nodes:
@@ -46,19 +45,26 @@ class Tree:
                 self._nodes[parent.name].children.add(node)
             else:
                 return False
+        self._nodes[node.name] = node
         return True
 
     def remove_node(self):
         # TODO (may not do)
         pass
 
-    def get_nodes(self):
+    def get_connections(self):
         """
-        Get's a list of all nodes in the tree.
-        Used for drawing the tree
-        :return: list of all nodes in the tree
+        Get's a list of all connected nodes from the tree
+        (source node, destination node).
+        Useful for Prims output
+        :return: list of all connected nodes
         """
-        return self._nodes.values()
+        out = []
+        nodes = self._nodes.values()
+        for node in nodes:
+            for child in node.children:
+                out.append((node, child))
+        return out
 
     def print_tree(self):
         """
