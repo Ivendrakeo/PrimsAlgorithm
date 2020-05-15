@@ -6,6 +6,7 @@ Course: CS 3851 - Algorithms (Final Project)
 
 import sys
 from Graph import Vertex
+import Graph
 
 
 class Tree:
@@ -63,7 +64,7 @@ class Tree:
         nodes = self._nodes.values()
         for node in nodes:
             for child in node.children:
-                out.append((node, child))
+                out.append((node, child, Graph.WeightedGraph.calculate_distance(node, child)))
         return out
 
     def print_tree(self):

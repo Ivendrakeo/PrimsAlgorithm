@@ -104,6 +104,22 @@ class WeightedGraph:
         """
         pass
 
+    def get_connections(self):
+        """
+        Get's a list of all connected vertex'es from the graph
+        (source node, destination node).
+        Useful for Prims output
+        :return: list of all connected nodes
+        """
+        passed = set()
+        out = []
+        for vertex in self._vertices:
+            for edge in self._edges[vertex]:
+                if edge.connectedVertex.name not in passed:
+                    out.append((edge.sourceVertex, edge.connectedVertex, edge.distance))
+            passed.add(vertex.name)
+        return out
+
     def print_graph(self):
         """
         Print's the graph to the console in a (somewhat)
@@ -157,7 +173,6 @@ class WeightedGraph:
     @staticmethod
     def calculate_distance(vertex_one, vertex_two):
         """
-        TODO
         Helper method which calculates the cartesian distance between
         two vertexes in the graph using the standard distance formula
         :return: distance between vertexes
