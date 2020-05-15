@@ -200,7 +200,7 @@ class Edge:
         # Vertex object which this edge connects to
         self.connectedVertex = connectedVertex
         # Source Vertex object
-        self.sourceVertex = sourceVertex;
+        self.sourceVertex = sourceVertex
 
     def __str__(self):
         """
